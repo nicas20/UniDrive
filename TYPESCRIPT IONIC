@@ -1,0 +1,65 @@
+-----------------------------------------------------------TELA LOGIN---------------------------------------------------------
+ 
+import { Component, OnInit } from '@angular/core';
+import { AlertController, IonButton, NavController, NavParams } from '@ionic/angular';
+ 
+ 
+ 
+ 
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.page.html',
+  styleUrls: ['./login.page.scss'],
+ 
+ 
+})
+export class LoginPage implements OnInit {
+  public get navParams(): NavParams {
+    return this.navParams;
+  }
+  public set navParams(value: NavParams) {
+    this.navParams = value;
+  }
+ 
+  email: String;
+  senha: String;
+  
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController) { 
+  }
+ 
+  ngOnInit() {
+  
+  }
+ 
+  async entrar(){
+    if(this.email == undefined || this.senha == undefined){
+      let alert = this.alertCtrl.create({
+        header: 'Atenção',
+        message: 'Preencha todos os campos!',
+        buttons: ['OK']
+      })
+      await (await alert).present();
+ 
+      if(this.email == 'teste@gmail.com' || this.senha == '123'){
+      this.navCtrl.navigateRoot('home');
+      }
+ 
+       
+    }
+  }
+}
+ 
+-----------------------------------------------------------TELA HOME---------------------------------------------------------
+ 
+import { Component } from '@angular/core';
+ 
+@Component({
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+})
+export class HomePage {
+ 
+  constructor() {}
+ 
+}
